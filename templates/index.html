@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicación de Visión por Computadora</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="{{ url_for('static', filename='js/scripts.js') }}" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Bienvenido a la Aplicación de Visión por Computadora</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Sube una Imagen para Procesar</h2>
+            <form id="contactForm" action="/" method="post" enctype="multipart/form-data">
+                <label for="input_file">Selecciona una imagen:</label>
+                <input type="file" id="input_file" name="input_file" accept="image/*" required>
+                
+                <label for="model">Selecciona un modelo:</label>
+                <select id="model" name="model" required>
+                    <option value="face_detection">Detección de Rostros</option>
+                    <option value="face_recognition">Reconocimiento Facial</option>
+                    <option value="pose_estimation">Estimación de Pose Humana</option>
+                    <!-- Añadir más opciones de modelos según sea necesario -->
+                </select>
+
+                <button type="submit">Procesar Imagen</button>
+            </form>
+
+            <!-- Spinner de carga -->
+            <div id="loadingSpinner" class="hidden">
+                <p>Procesando imagen...</p>
+            </div>
+        </section>
+
+        <!-- Contenedor dinámico para mostrar el resultado -->
+        <section aria-live="polite">
+            {% if output_image %}
+                <h2>Resultado del Procesamiento</h2>
+                <img src="{{ url_for('static', filename='output/' + output_image) }}" alt="Imagen procesada con el modelo seleccionado">
+            {% endif %}
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Aplicación de Visión por Computadora</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultados del Modelo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Resultado del Procesamiento</h1>
+    <img src="{{ output_image }}" alt="Imagen Procesada">
+    <br>
+    <a href="{{ url_for('index') }}">Procesar otra imagen</a>
+</body>
+</html>

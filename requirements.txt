@@ -1,0 +1,6 @@
+Flask
+Flask-Bootstrap
+numpy
+opencv-python
+requests
+onnxruntime
